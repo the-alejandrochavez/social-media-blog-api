@@ -16,4 +16,11 @@ public class AccountService {
         }
         return null;
     }
+
+    public Account accountExists(Account account) {
+        if(accDAO.checkAccount(account.getUsername(), account.getPassword()) != null) {
+            return accDAO.checkAccount(account.getUsername(), account.getPassword());
+        }
+        return null;
+    }
 }
