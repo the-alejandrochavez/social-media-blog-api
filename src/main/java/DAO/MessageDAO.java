@@ -69,4 +69,20 @@ public class MessageDAO {
         }
         return null;
     }
+
+    public Message removeMessageById(int id){
+        Connection connection = ConnectionUtil.getConnection();
+        try {
+            String sql = "DELETE * FROM message WHERE message_id = ?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ps.executeQuery();
+    
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }
