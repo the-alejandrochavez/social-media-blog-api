@@ -4,6 +4,8 @@ import DAO.MessageDAO;
 import DAO.AccountDAO;
 import Model.Message;
 
+import java.util.List;
+
 public class MessageService {
     public MessageDAO mesDAO;
     public AccountDAO accDAO;
@@ -20,6 +22,10 @@ public class MessageService {
             }
         }
         return null;
+    }
+
+    public List<Message> getAllMessages() {
+        return mesDAO.getAllMessages();
     }
     
 }
