@@ -28,4 +28,10 @@ public class MessageService {
         return mesDAO.getAllMessages();
     }
     
+    public Message getMessageById(int id) {
+        if(mesDAO.getMessageById(id) != null) {
+            return mesDAO.getMessageById(id);
+        }
+        return null;
+    }
 }
