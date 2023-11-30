@@ -20,7 +20,6 @@ public class MessageDAO {
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            System.out.println(message);
             if(rs.next()){
                 int message_id = (int) rs.getLong(1);
                 return new Message(message_id, message.getPosted_by(), message.getMessage_text(), message.getTime_posted_epoch());

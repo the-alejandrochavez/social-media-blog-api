@@ -58,6 +58,7 @@ public class SocialMediaController {
         ObjectMapper mapper = new ObjectMapper();
         Account acc = mapper.readValue(context.body(), Account.class);
         Account newAcc = accountService.addAccount(acc);
+
         if(newAcc!=null){
             context.status(200).json(newAcc);
         }else{
@@ -69,7 +70,7 @@ public class SocialMediaController {
         ObjectMapper mapper = new ObjectMapper();
         Account acc = mapper.readValue(context.body(), Account.class);
         Account accExists = accountService.accountExists(acc);
-        System.out.println(context.body());
+
         if(accExists!=null){
             context.status(200).json(accExists);
         }else{
@@ -81,6 +82,7 @@ public class SocialMediaController {
         ObjectMapper mapper = new ObjectMapper();
         Message message = mapper.readValue(context.body(), Message.class);
         Message newMes = messageService.newMessage(message);
+
         if(newMes!=null){
             context.status(200).json(newMes);
         }else{
@@ -96,6 +98,7 @@ public class SocialMediaController {
     private void getMessageByIdHandler(Context context) throws JsonProcessingException {
         int messageId = Integer.parseInt(context.pathParam("message_id"));
         Message message = messageService.getMessageById(messageId);
+
         if(message!=null) {
             context.json(message);
         }
@@ -104,6 +107,7 @@ public class SocialMediaController {
     private void deleteMessageByIdHandler(Context context) throws JsonProcessingException {
         int messageId = Integer.parseInt(context.pathParam("message_id"));
         Message message = messageService.getMessageById(messageId);
+
         if(message!=null) {
             context.json(message);
         }
@@ -114,8 +118,8 @@ public class SocialMediaController {
         Message message = mapper.readValue(context.body(), Message.class);
 
         int messageId = Integer.parseInt(context.pathParam("message_id"));
-    
         Message newMes = messageService.updateMessageById(message.getMessage_text(), messageId);
+        
         if(newMes!=null) {
             context.status(200).json(newMes);
         }
@@ -127,6 +131,7 @@ public class SocialMediaController {
     private void getAllMessagesFromUserHandler(Context context) throws JsonProcessingException {
         int id = Integer.parseInt(context.pathParam("account_id"));
         List<Message> messages = messageService.getAllMessagesFromUser(id);
+
         context.json(messages);
     }
 

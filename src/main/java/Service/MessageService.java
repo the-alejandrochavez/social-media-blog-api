@@ -50,7 +50,6 @@ public class MessageService {
     }
 
     public List<Message> getAllMessagesFromUser(int id) {
-        System.out.println(id);
         return mesDAO.getAllMessagesFromUser(id);
     }
 }
