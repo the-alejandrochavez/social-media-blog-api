@@ -41,4 +41,11 @@ public class MessageService {
         }
         return null;
     }
+
+    public Message updateMessageById(String newText, int id) {
+        if (mesDAO.getMessageById(id) != null && newText.length() > 0 && newText.length() < 255) {
+            return mesDAO.updateMessageById(newText, id);
+        }
+        return null;
+    }
 }
